@@ -1,6 +1,6 @@
 <div align="center">
   <a href="#">
-  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThUwv9Nu44KYHhCd3U7I-YWS-glbCRGNOzyw&usqp=CAU" alt="Logo project" height="160" />
+  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThUwv9Nu44KYHhCd3U7I-YWS-glbCRGNOzyw&usqp=CAU" alt="Logo project" width="80" height="80" />
   </a>
   <br>
   <br>
@@ -33,7 +33,7 @@
 You can install useRecording-yl by entering this command
 
 ```
-npm i use-recording-yl
+npm i use-screen-recording-yl
 ```
 
 ## Usage 💡

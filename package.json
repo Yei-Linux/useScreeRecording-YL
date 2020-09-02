@@ -33,6 +33,17 @@
   },
   "name": "use-screen-recording-yl",
   "author": "Jesus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yei-Linux/useScreeRecording-YL.git"
+  },
+  "homepage": "https://github.com/Yei-Linux/useScreeRecording-YL.git",
+  "keywords": [
+    "react",
+    "recording",
+    "screenRecording",
+    "hook"
+  ],
   "module": "dist/use-screen-recording-yl.esm.js",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
