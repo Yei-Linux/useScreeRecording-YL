@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 
 import ReactPlayer from "react-player"; 
 
-import useScreenRecording from '../src';
+import useScreenRecording from "use-screen-recording-yl";
 import { useRef, useState } from 'react';
 
 const App = () => {
