@@ -30,7 +30,8 @@
 * Continuously Maintained.
 
 ## Install 🐙
-You can install useRecording-yl by entering this command
+You can install useRecording-yl by entering this command.
+<a href="https://www.npmjs.com/package/use-screen-recording-yl">Click here for npm repository</a>
 
 ```
 npm i use-screen-recording-yl
