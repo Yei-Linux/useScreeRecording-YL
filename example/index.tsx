@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import ReactPlayer from "react-player"; 
 
 import useScreenRecording from '../src';
-import { useRef, useEffect } from 'react';
+import { useRef, useState } from 'react';
 
 const App = () => {
   const refContainer: any = useRef();
@@ -17,13 +17,19 @@ const App = () => {
     handleStartRecording,
     handleStopRecording,
   } = useScreenRecording();
+  const [isVisible,setVisible] = useState(false);
 
   const handleClickStart = () => {
+    setVisible(false);
     handleStartRecording(
       refContainer.current.getBoundingClientRect().x,
       refContainer.current.getBoundingClientRect().y,
       refContainer.current.getBoundingClientRect().width,
-      refContainer.current.getBoundingClientRect().height
+      refContainer.current.getBoundingClientRect().height,
+      0,
+      0,
+      500,
+      500
     );
   };
 
@@ -32,8 +38,7 @@ const App = () => {
   };
 
   const handleClickShow = () => {
-    console.log(blobVideoState);
-    console.log(urlVideoState);
+    setVisible(true);
   };
 
   return (
@@ -58,15 +63,15 @@ const App = () => {
       />
       <button onClick={handleClickStart}>Start Recording</button>
       <button onClick={handleClickStop}>Stop Recording</button>
-      <button onClick={handleClickShow}>Show Blob</button>
+      <button onClick={handleClickShow}>Show Video</button>
 
-      <ReactPlayer
+      { isVisible && <ReactPlayer
         width="500"
         height="500"
         controls={true}
         url={urlVideoState}
         ref={player}
-      />
+      />}
     </div>
   );
 };

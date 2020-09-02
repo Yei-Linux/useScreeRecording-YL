@@ -1,156 +1,114 @@
-# TSDX React User Guide
+<div align="center">
+  <a href="#">
+  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThUwv9Nu44KYHhCd3U7I-YWS-glbCRGNOzyw&usqp=CAU" alt="Logo project" height="160" />
+  </a>
+  <br>
+  <br>
+  <p>
+    <b>useScreenRecording-yl</b>
+  </p>
+  <p>
+     <i>Hook for recording an specific element on screen</i>
+  </p>
+</div>
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+---
 
-> This TSDX setup is meant for developing React component libraries (not apps!) that can be published to NPM. If you’re looking to build a React-based app, you should use `create-react-app`, `razzle`, `nextjs`, `gatsby`, or `react-static`.
+**Content**
 
-> If you’re new to TypeScript and React, checkout [this handy cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet/)
+* [Features](##features)
+* [Install](##install)
+* [Usage](##usage)
+* [Exemples](##exemples)
+* [Documentation](##documentation)
+* [API](##Api)
+* [Contributing](##contributing)
+* [Maintainers](##maintainers)
 
-## Commands
+## Features ✨
+* Easy to use.
+* Continuously Maintained.
 
-TSDX scaffolds your new library inside `/src`, and also sets up a [Parcel-based](https://parceljs.org) playground for it inside `/example`.
+## Install 🐙
+You can install useRecording-yl by entering this command
 
-The recommended workflow is to run TSDX in one terminal:
-
-```bash
-npm start # or yarn start
+```
+npm i use-recording-yl
 ```
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+## Usage 💡
+This package is for recording element on screen and it will generate blob video and url video of recording.
 
-Then run the example inside another:
+## Exemples 🖍
+```
+  const refContainer: any = useRef();
+  const {
+    urlVideoState,
+    blobVideoState,
+    ScreenRecording,
+    handleStartRecording,
+    handleStopRecording,
+  } = useScreenRecording();
+  ...
+  const handleClickStart = () => {
+    setVisible(false);
+    handleStartRecording(
+      refContainer.current.getBoundingClientRect().x,
+      refContainer.current.getBoundingClientRect().y,
+      refContainer.current.getBoundingClientRect().width,
+      refContainer.current.getBoundingClientRect().height,
+      0, //By Default is 0
+      0, //By Default is 0
+      500,//By Default is 1500
+      500 //By Default is 500
+    );
+  };
 
-```bash
-cd example
-npm i # or yarn to install dependencies
-npm start # or yarn start
+  const handleClickStop = () => {
+    handleStopRecording();
+  };
+  ...
+   return (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <ScreenRecording />
+      <h2>Image for testing</h2>
+      <img
+        ref={refContainer}
+        src="https://www.chess.com/bundles/web/images/offline-play/standardboard.6a504885.png"
+        alt=""
+        width="500"
+        height="500"
+      />
+      <button onClick={handleClickStart}>Start Recording</button>
+      <button onClick={handleClickStop}>Stop Recording</button>
+      <button onClick={handleClickShow}>Show Video</button>
+      ...
+    </div>
+  );
 ```
 
-The default example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure TSDX is running in watch mode like we recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
+## Contributing 🍰
+Please make sure to read the [Contributing Guide]() before making a pull request.
 
-To do a one-off build, use `npm run build` or `yarn build`.
+Thank you to all the people who already contributed to this project!
 
-To run tests, use `npm test` or `yarn test`.
+## Maintainers 👷
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Yei-Linux"><img src="https://avatars1.githubusercontent.com/u/38733057?s=60&v=4" width="100px;" alt="Yei Linux"/><br /><sub><b>Yei Linux</b></sub></a><br /><a href="#" title="Code">💻</a></td>
+  </tr>
+</table>
 
-## Configuration
+## License ⚖️
+Enter what kind of license you're using.
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
-
-### Jest
-
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/example
-  index.html
-  index.tsx       # test your component here in a demo app
-  package.json
-  tsconfig.json
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
-```
-
-#### React Testing Library
-
-We do not set up `react-testing-library` for you yet, we welcome contributions and documentation on this.
-
-### Rollup
-
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
-
-### TypeScript
-
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
-
-## Continuous Integration
-
-### GitHub Actions
-
-A simple action is included that runs these steps on all pushes:
-
-- Installs deps w/ cache
-- Lints, tests, and builds
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
-```
-
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Deploying the Example Playground
-
-The Playground is just a simple [Parcel](https://parceljs.org) app, you can deploy it anywhere you would normally deploy that. Here are some guidelines for **manually** deploying with the Netlify CLI (`npm i -g netlify-cli`):
-
-```bash
-cd example # if not already in the example folder
-npm run build # builds to dist
-netlify deploy # deploy the dist folder
-```
-
-Alternatively, if you already have a git repo connected, you can set up continuous deployment with Netlify:
-
-```bash
-netlify init
-# build command: yarn build && cd example && yarn && yarn build
-# directory to deploy: example/dist
-# pick yes for netlify.toml
-```
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
-
-## Usage with Lerna
-
-When creating a new package with TSDX within a project set up with Lerna, you might encounter a `Cannot resolve dependency` error when trying to run the `example` project. To fix that you will need to make changes to the `package.json` file _inside the `example` directory_.
-
-The problem is that due to the nature of how dependencies are installed in Lerna projects, the aliases in the example project's `package.json` might not point to the right place, as those dependencies might have been installed in the root of your Lerna project.
-
-Change the `alias` to point to where those packages are actually installed. This depends on the directory structure of your Lerna project, so the actual path might be different from the diff below.
-
-```diff
-   "alias": {
--    "react": "../node_modules/react",
--    "react-dom": "../node_modules/react-dom"
-+    "react": "../../../node_modules/react",
-+    "react-dom": "../../../node_modules/react-dom"
-   },
-```
-
-An alternative to fixing this problem would be to remove aliases altogether and define the dependencies referenced as aliases as dev dependencies instead. [However, that might cause other problems.](https://github.com/palmerhq/tsdx/issues/64)
+---
