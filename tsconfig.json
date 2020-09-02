@@ -1,0 +1,19 @@
+{
+  "include": ["src", "types","decs.d.ts"],
+  "compilerOptions": {
+    "module": "esnext",
+    "lib": ["dom", "esnext","ES2017"],
+    "importHelpers": true,
+    "declaration": true,
+    "sourceMap": true,
+    "rootDir": "./src",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "esModuleInterop": true
+  }
+}
